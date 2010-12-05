@@ -26,7 +26,7 @@ A character string specifying the name the data set used as the testing set.
 A vector of character strings containing the names of gene expression files.
 }
   \item{surv.data}{
-A list of two vectors, survival time and censoring status.
+A list of two vectors, survival time and censoring status.In the censoring status vector, 1 = event occurred, 0 = censored.
 }
   	\item{method}{
 		A character string specifying the feature selection method: "none" for top-100 ranking or one of the adjusting methods specified by the p.adjust function.}

@@ -19,7 +19,7 @@ Index of expression files in \code{geno.files} to combine.
 }
   
 \item{surv.data}{
-The list of two vectors, survival time and censoring status.
+The list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
   \item{common.gene}{
 A vector of character strings containing the names of the genes common to all data sets.

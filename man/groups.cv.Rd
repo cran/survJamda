@@ -18,7 +18,7 @@ Sample size of a data set.
 Number of folds of cross-validation.
 }
   \item{censor}{
-Vector of censoring status.
+Vector of censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
 }
 \details{

@@ -19,7 +19,7 @@ Matrix of gene expression data.
 Vector of survival time.
 }
   \item{censor}{
-Vector of censoring status.
+Vector of censoring status. 1 = event occurred, 0 = censored.
 }
   \item{ngroup}{
 An integer specifying the number of cross-validation folds.

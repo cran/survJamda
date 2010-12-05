@@ -2,7 +2,7 @@
 \alias{survJamda-package}
 \docType{package}
 \title{
-	Survival prediction by joint Analysis of microarray data
+	Survival prediction by joint analysis of microarray data
 }
 \description{
 	Prediction of survival and risk assessment of patients using joint analysis of microarray gene expression data.	
@@ -11,8 +11,8 @@
 	\tabular{ll}{
 		Package: \tab survJamda\cr
 		Type: \tab Package\cr
-		Version: \tab 1.0\cr
-		Date: \tab 2010-11-01\cr
+		Version: \tab 1.0.1\cr
+		Date: \tab 2010-12-05\cr
 		Depends: \tab survival, survivalROC, ecodist, survJamda.data\cr
 		License: \tab GPL (>= 2)\cr
 		LazyLoad: \tab yes\cr

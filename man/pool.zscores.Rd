@@ -21,7 +21,7 @@ A vector of character strings consisting of the names of the expression files.
 
 }
   \item{surv.data}{
-A list of two vectors, survival time and censoring status.
+A list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 
 }
 }

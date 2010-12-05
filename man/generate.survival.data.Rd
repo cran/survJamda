@@ -36,7 +36,7 @@ Scale parameter of the Weibull model. Select a value between 1 and 5.
 }
 
 \value{
-A list of three objects, (i) Matrix of simulated gene expression data, (ii) Vector of survival time and (iii) Vector of censoring status.
+A list of three objects, (i) Matrix of simulated gene expression data, (ii) Vector of survival time and (iii) Vector of censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
 
 \author{

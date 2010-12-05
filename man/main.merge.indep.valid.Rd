@@ -16,7 +16,7 @@ main.merge.indep.valid(geno.files,surv.data,gn.nb=100,method = "none",
 Vector of character strings containing the names of gene expression files.
 }
   \item{surv.data}{
-List of two vectors, survival time and censoring status.
+List of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
 \item{gn.nb}{
 Number of genes to select for gene signature when \code{method}="none".

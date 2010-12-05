@@ -18,7 +18,7 @@ Matrix of gene expression data.
 Vector of survival time.
 }
   \item{censor}{
-Vector of censoring status.
+Vector of censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
   \item{iter}{
 An integer specifying the current iteration.

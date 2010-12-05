@@ -12,10 +12,10 @@ calPerformance.single.indep(lst1, lst2, method,gn.nb)
 
 \arguments{
   \item{lst1}{
-A list of two objects, (i) the gene expression data and (ii) the list of survival time and censoring status of the data set used as the training set.
+A list of two objects, (i) the gene expression data and (ii) the list of survival time and censoring status of the data set used as the training set. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
   \item{lst2}{
-A list of two objects, (i) the gene expression data and (ii) the list of survival time and censoring status of an independent data set used as the testing set.
+A list of two objects, (i) the gene expression data and (ii) the list of survival time and censoring status of an independent data set used as the testing set. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
   \item{method}{
 	A character string specifying the feature selection method: "none" for top-ranking or one of the adjusting methods specified by the p.adjust function.

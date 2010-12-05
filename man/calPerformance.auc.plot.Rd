@@ -11,7 +11,7 @@
 }
 \arguments{
   	\item{lst}{
-		List of two objects, the gene expression data matrix and a list of two vectors, survival time and censoring status.
+		List of two objects, the gene expression data matrix and a list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 	}
   	\item{train.ind}{
      		Training set index.

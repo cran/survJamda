@@ -14,7 +14,7 @@ splitMerged.indep(files, lst, i, j, method,gn.nb)
 A vector of character strings containing the names of the expression files.
 }
   \item{lst}{
-A list of two objects, (i) gene expression data and (ii) list of two vectors, survival time and censoring status.
+A list of two objects, (i) gene expression data and (ii) list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
   \item{i}{
 Index of the names of the expression files composing the training set.

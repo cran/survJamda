@@ -15,7 +15,7 @@ meta.main(geno.files, surv.data, method = "none")
 A vector of character strings containing the names of expression files.
 }
   \item{surv.data}{
-The list of two vectors, survival time and censoring status.
+The list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
  \item{method}{
 		A character string specifying the feature selection method: "none" for top-100 ranking or one of the adjusting methods specified by the p.adjust function}

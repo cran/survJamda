@@ -15,7 +15,7 @@ main.single.indep.valid(geno.files, surv.data,normalization = "zscore",
 A vector of character strings containing the names of expression files.
 }
   \item{surv.data}{
-The list of two vectors, survival time and censoring status.
+The list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
   \item{normalization}{
 A character string, "combat" or "zscore". 

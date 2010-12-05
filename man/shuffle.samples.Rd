@@ -15,7 +15,7 @@ shuffle.samples(n, censor, train.nb)
 Sample size of the complete data set.
 }
   \item{censor}{
-Vector of censoring status.
+Vector of censoring status. 1 = event occurred, 0 = censored.
 }
   \item{train.nb}{
 Number of samples in the training set.

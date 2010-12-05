@@ -18,7 +18,7 @@ Vector of character strings specifying the names of the genes common to all sing
 Vector of character strings specifying the names of gene expression files.
 }
   \item{surv.data}{
-The list of two vectors, survival time and censoring status.
+The list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
 \item{batchID}{
 For a given data set, the batch id can be an integer or the name of the data set. The batch id must be the same for all samples or arrays of a data set. 

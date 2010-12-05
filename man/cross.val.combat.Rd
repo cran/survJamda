@@ -18,7 +18,7 @@ Matrix of gene expression data.
 Vector of survival time.
 }
   \item{censor}{
-Vector of censoring status.
+Vector of censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
  \item{batchID}{
 Vector containing the batch ID of the data set \code{x}. The batch ID of the data sets composing the matrix \code{x} should be in the same order of the component data sets. For a given data set, the batch id can be an integer or the name of the data set. The batch id must be the same for all samples or arrays of a data set. 

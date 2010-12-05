@@ -18,7 +18,7 @@ data sets.
 Vector of character strings containing the names of expression files.
 }
   \item{surv.data}{
-The list of two vectors, survival time and censoring status.
+The list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
 \item{batchID}{
 For a given data set, the batch id can be an integer or just the name of the data set. The batch id must be the same for all samples or arrays of a data set. 

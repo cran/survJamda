@@ -18,7 +18,7 @@ A vector of character strings containing the name of the genes common to the dat
 A vector of character strings containing the names of expression files.
 }
   \item{surv.data}{
-The list of two vectors, survival time and censoring status.
+The list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
   \item{x}{
 A vector of indices of the names of the expression files composing the training set.

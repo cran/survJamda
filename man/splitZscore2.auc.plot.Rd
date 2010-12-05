@@ -19,7 +19,7 @@ A vector of character strings containing the names of the genes common to the al
 A vector of character strings containing the names of gene expression files.
 }
   \item{surv.data}{
-A list of two vectors, survival time and censoring status.
+A list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
   \item{lst}{
 The list of two objects, (i) matrix of gene expression data and (ii) list of two vectors, survival time and censoring status.

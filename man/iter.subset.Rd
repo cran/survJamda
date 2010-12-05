@@ -20,7 +20,7 @@ Matrix of gene expression data.
 Vector of survival times.
 }
   \item{censor}{
-Vector of censoring status.
+Vector of censoring status. 1 = event occurred, 0 = censored.
 }
 	\item{method}{
 		A character string specifying the feature selection method: "none" for top-ranking or one of the adjusting methods specified by the p.adjust function.}

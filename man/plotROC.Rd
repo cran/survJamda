@@ -19,7 +19,7 @@ Plot time-dependent AUC based on different survival time points.
 	Vector of combined survival times.
    }
   \item{all.censor}{
-Vector of combined censoring status.
+Vector of combined censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
    }
   \item{lp}{
 Vector of linear predictor scores or markers. \code{lp} is the sum of gene expression values weighted by the Cox coefficients. 

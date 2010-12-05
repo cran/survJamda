@@ -21,7 +21,7 @@ Index of the data files in \code{geno.files} to be combined.
 }
 
   \item{surv.data}{
-List of two vectors, survival time and censoring status.
+List of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
 }
 

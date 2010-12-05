@@ -15,7 +15,7 @@ excl.missing(mat,phyno)
 Matrix of gene expression data.
 }
   \item{phyno}{
-A list of two vectors, survival time and censoring status.
+A list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
 }
 
