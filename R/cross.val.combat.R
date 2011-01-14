@@ -51,7 +51,7 @@ function (x,y,censor,batchID, method,gn.nb,plot.roc, ngroup, iter)
  	lp.train = cox.coef[p.list]%*%t(train.adj)[p.list,]
 	lp.train = as.vector(lp.train)
 
-	if (is.vector(test.adj[,p.list]) && length(test.adj[,p.list]) ==length(lst$coef[p.list]))
+	if (is.vector(test.adj[,p.list]) && length(test.adj[,p.list]) ==length(cox.coef[p.list]))
 		m = test.adj[,p.list]
 	else
 		m = t(test.adj[,p.list])

@@ -2,7 +2,7 @@ Package: survJamda
 Type: Package
 Title: Survival prediction by joint analysis of microarray gene
         expression data
-Version: 1.1.1
+Version: 1.1.2
 Date: 2011-01-14
 Author: Haleh Yasrebi
 Maintainer: Haleh Yasrebi<hyasrebi@yahoo.com>
@@ -12,6 +12,6 @@ Description: Microarray gene expression data can be analyzed
 Depends: survival, survivalROC,ecodist,survcomp,survJamda.data
 License: GPL (>= 2)
 LazyLoad: yes
-Packaged: 2011-01-27 11:47:32 UTC; hyasrebi
+Packaged: 2012-10-29 08:59:53 UTC; ripley
 Repository: CRAN
-Date/Publication: 2011-01-27 12:21:04
+Date/Publication: 2012-10-29 08:59:53

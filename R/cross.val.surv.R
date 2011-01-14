@@ -35,20 +35,22 @@ function (x, y, censor, ngroup, iter, method, zscore,gn.nb,gn.nb.display,plot.ro
 		x[groups[[j]], ] = scale (t(scale(t(x[groups[[j]], ]))))
 	}
 
-	if (gn.nb.display >= 1){
-		if (is.matrix(x))
-			print(sort(colnames(x)[p.list][1:gn.nb.display]))
-	}
-
 	my.func <- featureselection
 	p.list<- do.call(my.func, list(x[-groups[[j]],], y[-groups[[j]]],censor[-groups[[j]]], method, gn.nb))
 
 		cox.coef = cal.cox.coef (x[-groups[[j]],], y[-groups[[j]]],censor[-groups[[j]]])
 
+	if (gn.nb.display >= 1){
+		if (is.matrix(x)){
+			cat("Selected genes:\n")
+			cat(sort(colnames(x)[p.list][1:gn.nb.display]), "\n")
+		}
+	}
+
 	lp.train = cox.coef[p.list]%*%t(x[-groups[[j]],p.list])
 	lp.train = as.vector(lp.train)
 
-	if (is.vector(x[groups[[j]],p.list]) && length(x[groups[[j]],p.list]) == length(lst$coef[p.list]))
+	if (is.vector(x[groups[[j]],p.list]) && length(x[groups[[j]],p.list]) == length(cox.coef[p.list]))
 		m = x[groups[[j]],p.list]
 	else
 		m = t(x[groups[[j]],p.list])

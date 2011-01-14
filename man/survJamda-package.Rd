@@ -11,7 +11,7 @@
 	\tabular{ll}{
 		Package: \tab survJamda\cr
 		Type: \tab Package\cr
-		Version: \tab 1.1.1\cr
+		Version: \tab 1.1.2\cr
 		Date: \tab 2011-01-14\cr
 		Depends: \tab survival, survivalROC, ecodist, survcomp, survJamda.data\cr
 		License: \tab GPL (>= 2)\cr
