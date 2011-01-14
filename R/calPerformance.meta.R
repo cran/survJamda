@@ -24,9 +24,11 @@ function(common.gene,zstat, i, j, geno.files, surv.data, method)
 		surv= surv[!is.na(surv)]
 
 		lp = comb[cm.gn]%*%t(test[,cm.gn])
+		lp = as.vector(lp)
 
 		sgn = ifelse(lp < median(lp), 0,1)
 		sgn = as.vector(sgn)
+
 		cox.hr = coxph(Surv(surv,censor)~sgn)
 
 		roc.fit =survivalROC (Stime = surv, status = censor, marker=lp, predict.time = mean(surv), span = 0.25*NROW(test)^(-0.20))

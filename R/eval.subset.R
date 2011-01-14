@@ -12,26 +12,21 @@ function (x, y, censor,iter, method, gn.nb, train.nb)
 	train.ind = lst.samples$train.ind
 	test.ind = lst.samples$test.ind
 	
-	lst = featureselection(x[train.ind,], y[train.ind],censor[train.ind])
-
-	p.list <- p.adjust(lst$p,method=method)
-	if (method == "none")
-		p.list = order(p.list)[1:gn.nb]
-	else{
-		p.list = (p.list<= .05)	
-		gn.nb = sum(p.list)
-		cat ("Nb selected genes: ", gn.nb, "\n")
-	}
-
+	my.func <- featureselection
+	p.list<- do.call(my.func, list(x[train.ind,], y[train.ind],censor[train.ind], method, gn.nb))
+	
+	cox.coef = cal.cox.coef(x[train.ind,], y[train.ind],censor[train.ind])
   	
-	lp.train = lst$coef[p.list]%*%t(x[train.ind,p.list])
+	lp.train = cox.coef[p.list]%*%t(x[train.ind,p.list])
+	lp.train = as.vector(lp.train)
 
 	if (is.vector(x[test.ind,p.list]) && length(x[test.ind,p.list]) == length(lst$coef[p.list]))
 		m = x[test.ind,p.list]
 	else
 		m = t(x[test.ind,p.list])
 
-	lp = lst$coef[p.list]%*%m
+	lp = cox.coef[p.list]%*%m
+	lp = as.vector(lp)
     
 	roc.fit =survivalROC (Stime = as.vector(y[test.ind]), status = as.vector(censor[test.ind]), marker=lp, predict.time = mean(y[test.ind]), span = 0.25*NROW(x[test.ind,])^(-0.20))
 

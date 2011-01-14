@@ -27,40 +27,38 @@ function (x, y, censor, ngroup, iter, method, zscore,gn.nb,gn.nb.display,plot.ro
     	sign = NULL	
 	all.fp = NULL
 	all.tp = NULL
-	 options(warn=-1) 
-
+	options(warn=-1) 
+#######################################
    for (j in 1:ngroup) {
 	if (zscore){
 		x[-groups[[j]], ] = scale (t(scale(t(x[-groups[[j]], ]))))
 		x[groups[[j]], ] = scale (t(scale(t(x[groups[[j]], ]))))
-	}
-	lst = featureselection(x[-groups[[j]],], y[-groups[[j]]],censor[-groups[[j]]])
-	p.list <- p.adjust(lst$p,method=method)
-	if (method == "none")
-		p.list = order(p.list)[1:gn.nb]
-	else{
-		p.list = (p.list<= .05)	
-		gn.nb = sum(p.list)
-		cat ("Selected genes nb: ", gn.nb, "\n")
 	}
 
 	if (gn.nb.display >= 1){
 		if (is.matrix(x))
 			print(sort(colnames(x)[p.list][1:gn.nb.display]))
 	}
-  	
-	lp.train = lst$coef[p.list]%*%t(x[-groups[[j]],p.list])
+
+	my.func <- featureselection
+	p.list<- do.call(my.func, list(x[-groups[[j]],], y[-groups[[j]]],censor[-groups[[j]]], method, gn.nb))
+
+		cox.coef = cal.cox.coef (x[-groups[[j]],], y[-groups[[j]]],censor[-groups[[j]]])
+
+	lp.train = cox.coef[p.list]%*%t(x[-groups[[j]],p.list])
+	lp.train = as.vector(lp.train)
 
 	if (is.vector(x[groups[[j]],p.list]) && length(x[groups[[j]],p.list]) == length(lst$coef[p.list]))
 		m = x[groups[[j]],p.list]
 	else
 		m = t(x[groups[[j]],p.list])
 
-	lp = lst$coef[p.list]%*%m
+	lp = cox.coef[p.list]%*%m
+	lp = as.vector(lp)
 
 	predict.time =  mean(y[groups[[j]]][censor[groups[[j]]]==1])
 
-	roc.fit =survivalROC (Stime = y[groups[[j]]], status = censor[groups[[j]]], marker =lp, predict.time = predict.time, span = 0.25*NROW(x[groups[[j]],order(lst$p)[1:gn.nb]])^(-0.20))
+	roc.fit =survivalROC (Stime = y[groups[[j]]], status = censor[groups[[j]]], marker =lp, predict.time = predict.time, span = 0.25*NROW(x[groups[[j]],])^(-0.20))
 	pred.fit[j] = roc.fit$AUC
 
 	all.fp = rbind(all.fp,roc.fit$FP)
@@ -81,4 +79,3 @@ function (x, y, censor, ngroup, iter, method, zscore,gn.nb,gn.nb.display,plot.ro
 	val = c(mean(pred.fit), summary (cox.hr)[[6]][2])
     return(val)
 }
-

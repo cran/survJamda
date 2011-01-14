@@ -1,5 +1,5 @@
 main.merge.indep.valid <-
-function(geno.files,surv.data,gn.nb=100,method = "none", normalization= "zscore1")
+function(geno.files,surv.data,gn.nb=100,method = "none", normalization= "zscore1",perf.eval = "auc")
 {
 	require(survival)
         require(survivalROC)
@@ -28,9 +28,9 @@ function(geno.files,surv.data,gn.nb=100,method = "none", normalization= "zscore1
 			lst = prep(common.gene,geno.files,surv.data,x,y)
 
 		if (normalization == "zscore1" || normalization == "combat")
-			splitMerged.indep (geno.files,lst, x, y, method,gn.nb)
+			splitMerged.indep (geno.files,lst, x, y, method,gn.nb,perf.eval)
 		else
-			splitZscore2.merge.indep (common.gene,geno.files,surv.data,lst, x, y, method,gn.nb)	
+			splitZscore2.merge.indep (common.gene,geno.files,surv.data,lst, x, y, method,gn.nb,perf.eval)	
 	}
 }
 

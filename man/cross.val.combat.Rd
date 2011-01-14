@@ -42,6 +42,8 @@ An integer variable specifying the current number of iteration.
 }
 }
 \details{
+If the user wants to apply his own feature selection method, he should define his function with the same number of parameters as the defined feature selection function of the package, i.e. \code{featureselection}.
+
 The p.adjust function in the R stats package is used and all adjusted p-values not greater than 0.05 are retained if \code{method} != "none".
 
 ROC curves are the plots of the mean of true positives (sensitivity) and the mean of false positives (1-specificity) over \code{ngroup} folds of cross-validation.

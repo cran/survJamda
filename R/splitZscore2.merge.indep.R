@@ -1,6 +1,6 @@
 
 splitZscore2.merge.indep <-
-function (common.gene, geno.files,surv.data,lst, i,j,method,gn.nb)
+function (common.gene, geno.files,surv.data,lst, i,j,method,gn.nb,perf.eval)
 
 {
 	train.ind = NULL
@@ -29,6 +29,6 @@ function (common.gene, geno.files,surv.data,lst, i,j,method,gn.nb)
 	test.ind = det.set.ind(0,j)
 
 
-	calPerformance.merge.indep(lst, train.ind, test.ind, method,gn.nb)
+	calPerformance.merge.indep(lst, train.ind, test.ind, method,gn.nb,perf.eval)
 }
 

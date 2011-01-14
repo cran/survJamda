@@ -11,9 +11,9 @@
 	\tabular{ll}{
 		Package: \tab survJamda\cr
 		Type: \tab Package\cr
-		Version: \tab 1.0.1\cr
-		Date: \tab 2010-12-05\cr
-		Depends: \tab survival, survivalROC, ecodist, survJamda.data\cr
+		Version: \tab 1.1.1\cr
+		Date: \tab 2011-01-14\cr
+		Depends: \tab survival, survivalROC, ecodist, survcomp, survJamda.data\cr
 		License: \tab GPL (>= 2)\cr
 		LazyLoad: \tab yes\cr
 	}
@@ -35,6 +35,8 @@
 \code{\link[survival]{coxph}},  
 \code{\link[survivalROC]{survivalROC}},  
 \code{\link[ecodist]{corgen}}, 
-\code{\link[stats]{p.adjust}} 
+\code{\link[stats]{p.adjust}},
+\code{\link[survcomp]{concordance.index}},
+ \code{\link[survcomp]{sbrier.score2proba}}
 }
 

@@ -46,6 +46,8 @@ An integer specifying whether the ROC curves should be plotted or not (1 or 0).
 \details{
 The p.adjust function in the R stats package is used and all adjusted p-values not greater than 0.05 are retained if \code{method} != "none".
 
+If the user wants to apply his own feature selection method, he should define his function with the same number of parameters as the defined feature selection function of the package, i.e. \code{featureselection}.
+
 ROC curves are the plots of the mean of true positives (sensitivity) and the mean of false positives (1-specificity) over \code{ngroup} folds of cross-validation.
 }
 

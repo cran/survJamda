@@ -8,7 +8,7 @@ Z-score2 normalization is performed as follows: First, the data sets are selecte
 }
 \usage{
 splitZscore2.merge.indep(common.gene, geno.files, surv.data, lst, i, j, 
-method,gn.nb)
+method,gn.nb,perf.eval)
 }
 
 \arguments{
@@ -36,12 +36,17 @@ Index of the name of the expression file used as the testing set.
 \item{gn.nb}{
 Number of genes to select for gene signature when \code{method}="none".
 } 
+\item{perf.eval}{
+A string taking one the values, "auc", "cindex", "bsc".
+} 
 }
 
 \details{
 In top-ranking, genes are selected based on univariate Cox P-value ranking using the coxph function in the R survival package. In this feature selection method, the genes are ranked based on their likelihood ratio P-value and the top-100 ranked genes with the smallest P-values are retained as the gene signature.
 
 The p.adjust function in the R stats package is used and all adjusted p-values not greater than 0.05 are retained if \code{method} != "none".
+
+If \code{perf.eval} == "auc", time-dependent AUC and hazard ratio are used as the measure of performance, \code{perf.eval} == "cindex", concordance index defined in the \code{survcomp} package or \code{perf.eval} == "bsc", brier score defined in the \code{survcomp} package is used.
 } 
 \value{
 None.

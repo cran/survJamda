@@ -43,26 +43,22 @@ function (x,y,censor,batchID, method,gn.nb,plot.roc, ngroup, iter)
 	test.adj = compute.combat("test", "testSample")
 	test.adj = t(test.adj)
 
-	lst = featureselection(train.adj, y[-groups[[j]]],censor[-groups[[j]]])
+	my.func <- featureselection
+	p.list<- do.call(my.func, list(x[-groups[[j]],], y[-groups[[j]]],censor[-groups[[j]]], method, gn.nb))
 
-	p.list <- p.adjust(lst$p,method=method)
-	if (method == "none")
-		p.list = order(p.list)[1:gn.nb]
-	else{
-		p.list = (p.list<= .05)	
-		gn.nb = sum(p.list)
-		cat ("Selected genes nb: ", gn.nb, "\n")
-	}
+	cox.coef = cal.cox.coef (x[-groups[[j]],], y[-groups[[j]]],censor[-groups[[j]]])
 
-  	lp.train = lst$coef[p.list]%*%t(train.adj)[p.list,]
+ 	lp.train = cox.coef[p.list]%*%t(train.adj)[p.list,]
+	lp.train = as.vector(lp.train)
 
 	if (is.vector(test.adj[,p.list]) && length(test.adj[,p.list]) ==length(lst$coef[p.list]))
 		m = test.adj[,p.list]
 	else
 		m = t(test.adj[,p.list])
 
-	lp = lst$coef[p.list]%*%m
-	
+	lp = cox.coef[p.list]%*%m
+	lp = as.vector(lp)
+
 	predict.time =  mean(y[groups[[j]]][censor[groups[[j]]]==1])
 
 	roc.fit =survivalROC (Stime = y[groups[[j]]], status = censor[groups[[j]]], marker =lp, predict.time = predict.time, span = 0.25*NROW(test.adj)^(-0.20))

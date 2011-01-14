@@ -8,7 +8,7 @@ Assess the performance of survival prediction derived from the merged data sets 
 }
 \usage{
 main.merge.indep.valid(geno.files,surv.data,gn.nb=100,method = "none",
- normalization = "zscore1")
+ normalization = "zscore1", perf.eval = "auc")
 }
 
 \arguments{
@@ -27,13 +27,20 @@ Number of genes to select for gene signature when \code{method}="none".
   \item{normalization}{
 A character string, "combat", "zscore1" or "zscore2".
 }
+\item{perf.eval}{
+A string taking one the values, "auc", "cindex", "bsc".
+} 
 }
 \details{
 In Z-score1 normalization, all data sets are Z-score normalized separately and then, the data sets composing the training set are merged together. The remaining set is used as the testing set. This process is continued S times (S being the number of data sets) until all data sets are used in the training and testing sets. 
 
 In Z-score2 normalization, the data sets are selected for the training and testing sets. Suppose there are S data sets. Then, in S iteration, S-1 data sets are used for the training set and the remaining set used as the testing set. This process is continued until all data sets are used in the training and testing sets. In each iteration, the data sets composing the training set are first merged together and the merged data set is then Z-score normalized. The testing set is independently adjusted by Z-score normalization.
 
+If the user wants to apply his own feature selection method, he should define his function with the same number of parameters as the defined feature selection function of the package, i.e. \code{featureselection}.
+
 The p.adjust function in the R stats package is used and all adjusted p-values not greater than 0.05 are retained if \code{method} != "none".
+
+If \code{perf.eval} == "auc", time-dependent AUC and hazard ratio are used as the measure of performance, \code{perf.eval} == "cindex", concordance index defined in the \code{survcomp} package or \code{perf.eval} == "bsc", brier score defined in the \code{survcomp} package is used.
 }
 \references{
 Yasrebi H,  Sperisen P,  Praz V,  Bucher P, 2009 Can Survival Prediction Be Improved By Merging Gene Expression Data Sets?. PLoS ONE 4(10): e7431. doi:10.1371/journal.pone.0007431.
@@ -63,7 +70,7 @@ surv.data = list(c(gse4335pheno[,6],gse3143pheno[,4],gse1992pheno[,19]),
 #The following script might  take some time
 #main.merge.indep.valid(geno.files,surv.data)
 
-function(geno.files,surv.data,method = "none", normalization= "zscore1")
+function(geno.files,surv.data,method = "none", normalization= "zscore1", perf.eval = "auc")
 {
         require(survival)
         require(survivalROC)
@@ -90,10 +97,10 @@ function(geno.files,surv.data,method = "none", normalization= "zscore1")
               lst = prep(common.gene,geno.files,surv.data,x,y)	
 
               if (normalization == "zscore1" || normalization == "combat")
-                     splitMerged.indep (geno.files,lst, x, y, method)
+                     splitMerged.indep (geno.files,lst, x, y, method, perf.eval)
               else
                      splitZscore2.merge.indep (common.gene,geno.files,surv.data,
-                     lst, x, y, method)	
+                     lst, x, y, method, perf.eval)	
        }
 }
 }

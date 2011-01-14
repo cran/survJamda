@@ -1,5 +1,5 @@
 splitMerged.indep <-
-function (files,lst, i,j, method,gn.nb)
+function (files,lst, i,j, method,gn.nb,perf.eval)
 {
 	cat ("Train data sets: ")
 	train.ind = det.set.ind(1,i)
@@ -8,6 +8,6 @@ function (files,lst, i,j, method,gn.nb)
 
 	test.ind = det.set.ind(0,j)
 	
-	calPerformance.merge.indep(lst, train.ind, test.ind, method,gn.nb)
+	calPerformance.merge.indep(lst, train.ind, test.ind, method,gn.nb,perf.eval)
 }
 

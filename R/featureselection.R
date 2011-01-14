@@ -1,5 +1,5 @@
 featureselection <-
-function (gnExpMat, survivaltime, censor){
+function (gnExpMat, survivaltime, censor, method = "none",gn.nb){
 	require (survival)
 
         ploglik = NULL
@@ -18,6 +18,14 @@ function (gnExpMat, survivaltime, censor){
                 ploglik = c (ploglik, pv)
                 cox.coef = c(cox.coef, cox.t$coef)
         }
-  return (list(coef = cox.coef, p = ploglik))
+	ploglik <- p.adjust(ploglik,method=method)
+	if (method == "none")
+		ploglik = order(ploglik)[1:gn.nb]
+	else{
+		ploglik = (ploglik<= .05)	
+		gn.nb = sum(ploglik)
+		cat ("Selected genes nb: ", gn.nb, "\n")
+	}
+  return (ploglik)
 }
 

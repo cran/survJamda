@@ -42,6 +42,8 @@ An integer specifying the number of selected genes to display.
 \details{
 The p.adjust function in the R stats package is used and all adjusted p-values not greater than 0.05 are retained if \code{method} != "none".
 
+If the user wants to apply his own feature selection method, he should define his function with the same number of parameters as the defined feature selection function of the package, i.e. \code{featureselection}.
+
 ROC curves are the plots of the mean of true positives (sensitivity) and the mean of false positives (1-specificity) over \code{ngroup} folds of cross-validation.
 }
 \references{
@@ -85,8 +87,7 @@ censor = c(gse4335pheno[,5],gse1992pheno[,18])
 #iter.crossval(data, surv,censor, zscore=1)
 
 ## The function is currently defined as
-function (data, surv, censor,ngroup=10, plot.roc = 0, method = "none", zscore=0,
-gn.nb = 100,gn.nb.display = 0){
+function (data, surv, censor,ngroup=10, plot.roc = 0, method = "none", zscore=0,gn.nb = 100,gn.nb.display = 0){
 
          require(survival)
          require(survivalROC)
@@ -104,7 +105,7 @@ gn.nb = 100,gn.nb.display = 0){
          cat ("Iteration\tAUC\tHR(CI)\t\tP-val\n")
          for (i in 1:ngroup){
                   new.lst = cross.val.surv(data, surv, censor,ngroup, i, method, zscore,
-                  gn.nb,gn.nb.display,plot.roc)
+                  gn.nb,gn.nb.display,plot.roc,p.list)
                   res = rbind (res, new.lst)
          }
 

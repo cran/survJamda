@@ -1,5 +1,5 @@
 main.single.indep.valid <-
-function(geno.files, surv.data,normalization = "zscore", method = "none",gn.nb = 100)
+function(geno.files, surv.data,normalization = "zscore", method = "none",gn.nb = 100, perf.eval = "auc")
 {
 	require(survival)
 	require(survivalROC)
@@ -26,7 +26,7 @@ function(geno.files, surv.data,normalization = "zscore", method = "none",gn.nb =
 				i.adj = mat[1:nrow(ds1$mat),]
 				j.adj = mat[(nrow(ds1$mat)+1):nrow(mat),]
 				cat ("Train data set: ", geno.files[j], " Test data set: ", geno.files[i], "\n")
-				calPerformance.single.indep(list(mat=j.adj,phyno=ds2$phyno),list(mat=i.adj, phyno=ds1$phyno), method=method,gn.nb=gn.nb)
+				calPerformance.single.indep(list(mat=j.adj,phyno=ds2$phyno),list(mat=i.adj, phyno=ds1$phyno), method=method,gn.nb=gn.nb, perf.eval)
 			}
 	}
 }
