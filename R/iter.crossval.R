@@ -1,9 +1,5 @@
 iter.crossval<-
 function (data, surv, censor,ngroup=10, plot.roc = 0, method = "none", zscore=0,gn.nb = 100,gn.nb.display = 0){
-
-	require(survival)
-	require(survivalROC)
-
 	res = NULL
 
 	file.name=deparse(substitute(data)) 

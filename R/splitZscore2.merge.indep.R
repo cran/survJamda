@@ -26,7 +26,7 @@ function (common.gene, geno.files,surv.data,lst, i,j,method,gn.nb,perf.eval)
 
 	cat("Test data set: ", geno.files[j], "\n")
 	
-	test.ind = det.set.ind(0,j)
+	test.ind = det.set.ind(geno.files,0,j)
 
 
 	calPerformance.merge.indep(lst, train.ind, test.ind, method,gn.nb,perf.eval)

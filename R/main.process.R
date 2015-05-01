@@ -6,7 +6,7 @@ function(common.gene, geno.files, surv.data,batchID,method = "none")
 	color.set = c("black","blue","green")
 	train.lst = NULL
 
-	batchID = det.batchID()
+	batchID = det.batchID(geno.files)
 	
 	for (y in curr_set){
 		x = setdiff(curr_set, y)

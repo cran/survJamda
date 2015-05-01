@@ -4,7 +4,7 @@ function (x, y, censor,iter, method, gn.nb, train.nb)
    call <- match.call()
     x <- as.matrix(x)
     n <- length(y)
-
+  
 	gn.lst = NULL
 	 options(warn=-1) 
 
@@ -20,7 +20,7 @@ function (x, y, censor,iter, method, gn.nb, train.nb)
 	lp.train = cox.coef[p.list]%*%t(x[train.ind,p.list])
 	lp.train = as.vector(lp.train)
 
-	if (is.vector(x[test.ind,p.list]) && length(x[test.ind,p.list]) == length(lst$coef[p.list]))
+	if (is.vector(x[test.ind,p.list]) && length(x[test.ind,p.list]) == length(cox.coef$coef[p.list]))
 		m = x[test.ind,p.list]
 	else
 		m = t(x[test.ind,p.list])

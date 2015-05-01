@@ -1,7 +1,5 @@
 featureselection <-
 function (gnExpMat, survivaltime, censor, method = "none",gn.nb){
-	require (survival)
-
         ploglik = NULL
         cox.coef = NULL
 

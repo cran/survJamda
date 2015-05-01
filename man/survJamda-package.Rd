@@ -2,7 +2,7 @@
 \alias{survJamda-package}
 \docType{package}
 \title{
-	Survival prediction by joint analysis of microarray data
+	Survival Prediction by Joint Analysis of Microarray Gene Expression Data
 }
 \description{
 	Prediction of survival and risk assessment of patients using joint analysis of microarray gene expression data.	
@@ -25,9 +25,11 @@
 }
 
 \references{
-	Yasrebi, H. Prediction of survival and risk assessment using joint analysis of microarray gene expression data, PhD thesis, EPFL, Switzerland, doi:10.5075/Thesis 4494, 2010.
+	Yasrebi H. SurvJamda: an R package to predict patients' survival and risk assessment using joint analysis of microarray gene expression data. Bioinformatics. 2011 Apr 15;27(8):1168-9. doi: 10.1093/bioinformatics/btr103. Epub 2011 Mar 2. PubMed PMID: 21367873.
 
 	Yasrebi H., Sperisen P., Praz V., Bucher P., Can Survival Prediction Be Improved By Merging Gene Expression Data Sets?, PLoS ONE 4(10): e7431. doi:10.1371/journal.pone.0007431, 2009.
+
+	Yasrebi, H. Prediction of survival and risk assessment using joint analysis of microarray gene expression data, PhD thesis, EPFL, Switzerland, doi:10.5075/Thesis 4494, 2010.
 }
 
 \keyword{package}

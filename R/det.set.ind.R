@@ -1,5 +1,6 @@
-det.set.ind <- function(train,i)
+det.set.ind <- function(geno.files,train,i)
 {
+
    if(train){
            curr.ind = 0
            ind = NULL

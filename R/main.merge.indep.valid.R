@@ -1,9 +1,6 @@
 main.merge.indep.valid <-
 function(geno.files,surv.data,gn.nb=100,method = "none", normalization= "zscore1",perf.eval = "auc")
 {
-	require(survival)
-        require(survivalROC)
-
 	if (length(geno.files) < 3) 
 		stop ("\rThere should be minimum 3 data sets", call. = FALSE)
 
@@ -11,7 +8,7 @@ function(geno.files,surv.data,gn.nb=100,method = "none", normalization= "zscore1
 		stop ("\rSet normalization = \"combat\" or normalization = \"zscore1\" or normalization = \"zscore2\"", call. = FALSE)
 
 	if (normalization == "combat")
-		batchID = det.batchID()
+		batchID = det.batchID(geno.files)
 
 	common.gene = colnames(get(geno.files[1]))
 	for (i in 2:length(geno.files))

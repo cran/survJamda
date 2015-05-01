@@ -1,14 +1,11 @@
 main.single.indep.valid <-
 function(geno.files, surv.data,normalization = "zscore", method = "none",gn.nb = 100, perf.eval = "auc")
 {
-	require(survival)
-	require(survivalROC)
-
 	if (!is.element(normalization, c("zscore","combat")))
 		stop("\rnormalization = \"zscore\" or normalization = \"combat\"", call.=FALSE)
 	
 	if(normalization == "combat")
-		batchID = det.batchID()
+		batchID = det.batchID(geno.files)
 	
 	for (i in 1:length(geno.files)){
 		for (j in 1:length(geno.files))

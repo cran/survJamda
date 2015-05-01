@@ -1,7 +1,5 @@
 featureselection.meta <-
 function (gnExpMat, survivaltime, censor){
-	require (survival)
-
         zstat = NULL
 
         for (i in 1:ncol(gnExpMat)){

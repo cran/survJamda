@@ -1,10 +1,6 @@
 proc.simulate <-
 function(tot.genes = 100, correlation = 0, gene.nb = 50, sample.nb = 400, beta.init = 0.5, shape = 1, scale = 1)
 {
-	require(survival)
-	require(survivalROC)
-	require(ecodist)
-
 	d1 = generate.survival.data (gene.nb, tot.genes,sample.nb,beta.init, correlation, shape, scale)
 	old.beta.init = beta.init
 	old.shape = shape

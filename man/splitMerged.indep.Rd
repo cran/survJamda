@@ -7,10 +7,13 @@ Merge the data sets by ComBat or Z-score1 normalization and apply independent va
 The data sets are either adjusted by Z-score1 normalization or ComBat. In Z-score1 normalization, all data sets are first Z-score normalized and then, merged together. The selection of data sets for the training and testing sets is performed before the application of independent validation. 
 }
 \usage{
-splitMerged.indep(files, lst, i, j, method,gn.nb,perf.eval)
+splitMerged.indep(geno.files,files, lst, i, j, method,gn.nb,perf.eval)
 }
 \arguments{
-  \item{files}{
+ \item{geno.files}{
+a vector of character containing the names of gene expression data files.
+}
+ \item{files}{
 A vector of character strings containing the names of the expression files.
 }
   \item{lst}{

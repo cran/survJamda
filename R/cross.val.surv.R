@@ -1,9 +1,6 @@
 cross.val.surv <-
 function (x, y, censor, ngroup, iter, method, zscore,gn.nb,gn.nb.display,plot.roc)
 {
-	require(survivalROC)
-	require(survival)
-	
    call <- match.call()
     x <- as.matrix(x)
 
@@ -28,7 +25,6 @@ function (x, y, censor, ngroup, iter, method, zscore,gn.nb,gn.nb.display,plot.ro
 	all.fp = NULL
 	all.tp = NULL
 	options(warn=-1) 
-#######################################
    for (j in 1:ngroup) {
 	if (zscore){
 		x[-groups[[j]], ] = scale (t(scale(t(x[-groups[[j]], ]))))

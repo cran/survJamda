@@ -1,9 +1,5 @@
 iter.subset <-
 function (data, surv, censor,method = "none", gn.nb = 50, train.nb = 100){
-
-	require (survival)
-	require (survivalROC)
-
  	data =data[!is.na(surv),]
    	censor= censor[!is.na(surv)]
    	surv= surv[!is.na(surv)]

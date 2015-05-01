@@ -9,7 +9,7 @@ function (geno.files,lst, i,j,col, method)
 
 	cat("Test data set: ", geno.files[j], "\n")
 
-	test.ind = det.set.ind(0,j)
+	test.ind = det.set.ind(geno.files,0,j)
 
 
 	calPerformance.auc.plot(lst, train.ind, test.ind, geno.files[j],col, method)

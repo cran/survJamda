@@ -1,8 +1,5 @@
 iter.crossval.combat <-
 function (data, surv, censor,batchID,ngroup=10,plot.roc = 0,method = "none",gn.nb = 100){
-	require(survival)
-	require(survivalROC)
-	
 	if(!exists("batchID"))
 		stop("\rSet batchID", call.=FALSE)
 	

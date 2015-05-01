@@ -1,8 +1,6 @@
 cal.cox.coef <-
 function (gnExpMat, survivaltime, censor){
-	require (survival)
-
-        cox.coef = NULL
+	cox.coef = NULL
 
         max.col = ifelse (is.matrix(gnExpMat), ncol(gnExpMat), 1)
 

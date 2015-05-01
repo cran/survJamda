@@ -1,9 +1,6 @@
 cross.val.combat <-
 function (x,y,censor,batchID, method,gn.nb,plot.roc, ngroup, iter)
 {
-	require(survivalROC)
-	require(survival)
-	
     call <- match.call()
     x <- as.matrix(x)
     n <- length(y)
