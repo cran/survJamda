@@ -1,5 +1,5 @@
 calPerformance.merge.indep <-
-function(lst, train.ind, test.ind, method,gn.nb,perf.eval)
+function(lst, train.ind, test.ind, method,gn.nb,perf.eval, normalization)
 {
 	train = lst$mat[train.ind,]
 	test = lst$mat[test.ind,]
@@ -24,7 +24,8 @@ function(lst, train.ind, test.ind, method,gn.nb,perf.eval)
 		cox.hr = coxph(Surv(lst$phyno$surv[test.ind],lst$phyno$censor[test.ind])~sgn)
 
 		cat ("AUC\tHR(CI)\t\tP-val\n")
-		cat (sprintf("%.2f",roc.fit$AUC), "\t", sprintf("%.2f",summary (cox.hr)[[6]][2]), "(", sprintf("%.2f",summary (cox.hr)[[7]][3]), "-", sprintf("%.2f",summary (cox.hr)[[7]][4]), ")\tp=", summary (cox.hr)[[6]][5],"\n",sep = "")	}
+		cat (sprintf("%.2f",roc.fit$AUC), "\t", sprintf("%.2f",summary (cox.hr)$coefficients[,"exp(coef)"]), "(", sprintf("%.2f",summary (cox.hr)$conf.int[,"lower .95"]), "-", sprintf("%.2f",summary (cox.hr)$conf.int[,"upper .95"]),")\t\tp=", summary (cox.hr)$coefficients[,"Pr(>|z|)"],"\n",sep = "")
+	}
 	else
 		if (perf.eval == "cindex"){
 			res = concordance.index(x=lp,surv.time = lst$phyno$surv[test.ind], surv.event =lst$phyno$censor[test.ind])

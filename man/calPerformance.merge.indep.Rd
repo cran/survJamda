@@ -5,9 +5,6 @@ Assess performance derived from the merged data set by independent validation}
 \description{
  Identify a gene signature from the merged data set and reduce of the gene set in the training and testing sets accordingly. The performance of the gene signature is performed by independent validation.
 }
-\usage{
-calPerformance.merge.indep(lst, train.ind, test.ind, method,gn.nb, perf.eval)
-}
 \arguments{
   \item{lst}{
  List of two objects, the gene expression data matrix and a list 
@@ -28,6 +25,9 @@ Number of genes to select for gene signature when \code{method}="none".
 }
 \item{perf.eval}{
 A string taking one the values, "auc", "cindex", "bsc".
+} 
+\item{normalization}{
+A character string specifying the normalization method, "zscore1", "zscore2" or "combat".
 } 
 }
 

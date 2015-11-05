@@ -9,3 +9,12 @@ import(
   survcomp,
   survJamda.data
 )
+importFrom("graphics", "abline", "legend", "lines", "par", "plot",
+             "title")
+  importFrom("stats", "density", "dnorm", "median", "p.adjust", "pchisq",
+             "pnorm", "qqline", "qqnorm", "qqplot", "quantile", "rgamma",
+             "runif", "sd", "var")
+  importFrom("utils", "read.csv", "read.table", "write.table")
+
+S3method(plot,roc.curves)
+S3method(plot,time.dep)

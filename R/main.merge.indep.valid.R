@@ -21,13 +21,15 @@ function(geno.files,surv.data,gn.nb=100,method = "none", normalization= "zscore1
 		prep = get(paste("prep",normalization, sep = ""))
 
 		if (normalization == "combat")
-			lst = prep(common.gene,geno.files,surv.data,batchID,x,y)		else
+			lst = prep(common.gene,geno.files,surv.data,batchID,x,y)		
+		else
 			lst = prep(common.gene,geno.files,surv.data,x,y)
 
 		if (normalization == "zscore1" || normalization == "combat")
-			splitMerged.indep (geno.files,lst, x, y, method,gn.nb,perf.eval)
+			splitMerged.indep (geno.files,lst, x, y, method,gn.nb,perf.eval, normalization)
+					
 		else
-			splitZscore2.merge.indep (common.gene,geno.files,surv.data,lst, x, y, method,gn.nb,perf.eval)	
+			splitZscore2.merge.indep (common.gene,geno.files,surv.data,lst, x, y, method,gn.nb,perf.eval, normalization)	
 	}
 }
 

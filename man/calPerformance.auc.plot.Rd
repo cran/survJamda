@@ -6,9 +6,7 @@
 \description{
  	Identify a gene signature and reduce the gene set in the training and testing sets accordingly.
 }
-\usage{
-	calPerformance.auc.plot(lst, train.ind, test.ind, file.name, col, method)
-}
+
 \arguments{
   	\item{lst}{
 		List of two objects, the gene expression data matrix and a list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
@@ -27,6 +25,11 @@
 	}
   	\item{method}{
 		A character string specifying the feature selection method: "none" for top-100 ranking or one of the adjusting methods specified by the p.adjust function.}
+\item{normalization}{
+	The normalization method, Z-score2, Z-score1 or ComBat.
+}
+\item{time.dep}{
+		An integer 0 or 1, 1 to plot time-dependent ROC curves for different time points and 0 for no plot}
 }
 
 

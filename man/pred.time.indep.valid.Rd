@@ -8,7 +8,7 @@ Prediction of survival time by independent validation.
 Identify the gene list common to all single data sets and invoke the subsequent function \code{main.process}.
 }
 \usage{
-pred.time.indep.valid(geno.files, surv.data)
+pred.time.indep.valid(geno.files, surv.data, method = "none", time.dep = 0)
 }
 
 \arguments{
@@ -18,6 +18,10 @@ A vector of character strings containing the names of gene expression files.
   \item{surv.data}{
 A list of two vectors, survival time and censoring status. In the censoring status vector, 1 = event occurred, 0 = censored.
 }
+\item{method}{
+		A character string specifying the feature selection method: "none" for top-100 ranking or one of the adjusting methods specified by the p.adjust function.}
+\item{time.dep}{
+		An integer 0 or 1, 1 to plot time-dependent ROC curves for different time points and 0 for no plot}
 }
 
 \value{

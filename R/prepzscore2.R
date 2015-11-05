@@ -11,6 +11,7 @@ function (common.gene, geno.files,surv.data,x,y)
 		res = comb.surv.censor(geno.files,c(i), surv.data)
 		surv = c(surv, res$surv)
 		censor = c(censor, res$censor)
+	
 	}
 	phyno = list(surv = surv, censor = censor)
 

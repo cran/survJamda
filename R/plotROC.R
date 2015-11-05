@@ -1,5 +1,5 @@
 plotROC <-
-function(test.ind,all.surv,all.censor, lp, file.name,col)
+function(test.ind,all.surv,all.censor, lp, file.name,col, normalization, time.dep)
 {
 	roc.fit = NULL
 	surv = all.surv[test.ind]
@@ -19,19 +19,9 @@ function(test.ind,all.surv,all.censor, lp, file.name,col)
 		lp.ind = ind-first.ind
 	}
 
-
-	surv.sorted = sort(all.surv[ind])
-
-	for (t in surv.sorted){
-		tmp = survivalROC (Stime = all.surv[ind], status =all.censor[ind], marker=lp[lp.ind], predict.time = t, span = 0.25*length(test.ind)^(-0.20))$AUC
-		roc.fit = c(roc.fit, round(tmp,2))
-
-	}
-
-	if(col == "black")
-		plot(surv.sorted,roc.fit,xlim = c(0, 120), ylim = c(0,1), xlab= "Time (months)", ylab="AUC", main = file.name, col = col,type = "l") 
-	else			
-		lines(surv.sorted,roc.fit,col = col)     
-	
+	if (time.dep)
+		plot.time.dep (all.surv[ind],all.censor[ind],lp[lp.ind],test.ind, file.name, col)
+	else
+		plot.roc.curves (all.surv[ind],all.censor[ind],lp[lp.ind],test.ind, file.name, col, normalization)
 }
 

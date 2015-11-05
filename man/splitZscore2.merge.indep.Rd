@@ -8,7 +8,7 @@ Z-score2 normalization is performed as follows: First, the data sets are selecte
 }
 \usage{
 splitZscore2.merge.indep(common.gene, geno.files, surv.data, lst, i, j, 
-method,gn.nb,perf.eval)
+method,gn.nb,perf.eval, normalization)
 }
 
 \arguments{
@@ -38,6 +38,9 @@ Number of genes to select for gene signature when \code{method}="none".
 } 
 \item{perf.eval}{
 A string taking one the values, "auc", "cindex", "bsc".
+} 
+\item{normalization}{
+A character string specifying the normalization method, "zscore1", "zscore2" or "combat".
 } 
 }
 

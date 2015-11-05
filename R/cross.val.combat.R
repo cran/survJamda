@@ -74,9 +74,9 @@ function (x,y,censor,batchID, method,gn.nb,plot.roc, ngroup, iter)
 
 	cox.hr = coxph(Surv(as.vector (y[all.group]),as.vector (censor[all.group]))~sign)
 
-	cat ("Iteration", iter, "\t",sprintf("%.2f",mean(pred.fit)), "\t", sprintf("%.2f",summary (cox.hr)[[6]][2]), "(", sprintf("%.2f",summary (cox.hr)[[7]][3]), "-", sprintf("%.2f",summary (cox.hr)[[7]][4]),")\t", summary (cox.hr)[[6]][5],"\n", sep = "")
+	cat ("Iteration", iter, "\t",sprintf("%.2f",mean(pred.fit)), "\t", sprintf("%.2f",summary (cox.hr)$coefficients[,"exp(coef)"]), "(", sprintf("%.2f",summary (cox.hr)$conf.int[,"lower .95"]), "-", sprintf("%.2f",summary (cox.hr)$conf.int[,"upper .95"]),")\t", summary (cox.hr)$coefficients[,"Pr(>|z|)"],"\n", sep = "")
 
-	val = c(mean(pred.fit), summary (cox.hr)[[6]][2])
+	val = c(mean(pred.fit), summary (cox.hr)$coefficients[,"exp(coef)"])
 
     return(val)
 }

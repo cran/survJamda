@@ -7,7 +7,7 @@ Determine the indices of the training and testing sets.
 Determine the indices of the training and testing sets prior to the plot of ROC curves.
 }
 \usage{
-splitMerged.auc.plot(geno.files, lst, i, j, col, method)
+splitMerged.auc.plot(geno.files, lst, i, j, col, method, time.dep)
 }
 
 \arguments{
@@ -29,6 +29,8 @@ Color of ROC curve.
 }
 \item{method}{
 		A character string specifying the feature selection method: "none" for top-100 ranking or one of the adjusting methods specified by the p.adjust function}
+\item{time.dep}{
+		An integer 0 or 1, 1 to plot time-dependent ROC curves for different time points and 0 for no plot}
 }
 
 

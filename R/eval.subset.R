@@ -35,9 +35,9 @@ function (x, y, censor,iter, method, gn.nb, train.nb)
 	
 	cox.hr = coxph(Surv(as.vector (y[test.ind]),as.vector (censor[test.ind]))~sgn)
         if(summary (cox.hr)[[6]][2] < 500){
-		cat ("Iteration", iter,"\t", sprintf("%.2f",roc.fit$AUC), "\t", sprintf("%.2f",summary (cox.hr)[[6]][2]), "(", sprintf("%.2f",summary (cox.hr)[[7]][3]), "-", sprintf("%.2f",summary (cox.hr)[[7]][4]),")\t", summary (cox.hr)[[6]][5],"\n", sep = "")
+		cat ("Iteration", iter, "\t",sprintf("%.2f",mean(roc.fit$AUC)), "\t", sprintf("%.2f",summary (cox.hr)$coefficients[,"exp(coef)"]), "(", sprintf("%.2f",summary (cox.hr)$conf.int[,"lower .95"]), "-", sprintf("%.2f",summary (cox.hr)$conf.int[,"upper .95"]),")\t", summary (cox.hr)$coefficients[,"Pr(>|z|)"],"\n", sep = "")
 
-		val = c(roc.fit$AUC, summary (cox.hr)[[6]][2])
+		val = c(mean(roc.fit$AUC), summary (cox.hr)$coefficients[,"exp(coef)"])
 	}
 	else
 		 val = c(0,0)

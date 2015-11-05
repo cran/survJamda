@@ -1,5 +1,5 @@
 splitZscore2.auc.plot <-
-function (common.gene, geno.files, surv.data,lst, i,j, col,method)
+function (common.gene, geno.files, surv.data,lst, i,j, col,method, time.dep)
 {
 	train.ind = NULL
 
@@ -27,6 +27,6 @@ function (common.gene, geno.files, surv.data,lst, i,j, col,method)
 
 	test.ind = (length(train.ind)+1):nrow(lst$mat)
 
-	calPerformance.auc.plot(lst, train.ind, test.ind, geno.files[j],col,method)
+	calPerformance.auc.plot(lst, train.ind, test.ind, geno.files[j],col,method, "Zscore2", time.dep)
 }
 

@@ -6,10 +6,6 @@ Plot ROC curves related to different time points.
 \description{
 Plot time-dependent AUC based on different survival time points.
 }
-\usage{
-	plotROC(test.ind, all.surv, all.censor, lp, file.name, col)
-}
-
 \arguments{
   \item{test.ind}{
     	Index of testing set.
@@ -30,9 +26,14 @@ Vector of character strings containing the names of expression files.
   \item{col}{
 Color of ROC curve.
 }
+\item{normalization}{
+	The normalization method, Z-score2, Z-score1 or ComBat.
+}
+\item{time.dep}{
+		An integer 0 or 1, 1 to plot time-dependent ROC curves for different time points and 0 for no plot}
 }
 \value{
- ROC-curves plot.
+ None.
 }
 
 \author{

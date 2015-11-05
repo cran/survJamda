@@ -27,7 +27,8 @@ function(lst1, lst2, method,gn.nb,perf.eval)
 		cox.hr = coxph(Surv(test.vec$surv, test.vec$censor)~sgn)
 
 		cat ("AUC\tHR(CI)\t\t\tP-val\n")
-        	cat (sprintf("%.2f",roc.fit$AUC), "\t", sprintf("%.2f",summary (cox.hr)[[6]][2]), "(", sprintf("%.2f",summary (cox.hr)[[7]][3]), "-", sprintf("%.2f",summary (cox.hr)[[7]][4]),")\t\tp=", summary (cox.hr)[[6]][5],"\n",sep = "")
+    
+		cat (sprintf("%.2f",roc.fit$AUC), "\t", sprintf("%.2f",summary (cox.hr)$coefficients[,"exp(coef)"]), "(", sprintf("%.2f",summary (cox.hr)$conf.int[,"lower .95"]), "-", sprintf("%.2f",summary (cox.hr)$conf.int[,"upper .95"]),")\t\tp=", summary (cox.hr)$coefficients[,"Pr(>|z|)"],"\n",sep = "")
 	}
 	else
 		if (perf.eval == "cindex"){

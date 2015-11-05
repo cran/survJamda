@@ -17,6 +17,7 @@ function (gnExpMat, survivaltime, censor, method = "none",gn.nb){
                 cox.coef = c(cox.coef, cox.t$coef)
         }
 	ploglik <- p.adjust(ploglik,method=method)
+
 	if (method == "none")
 		ploglik = order(ploglik)[1:gn.nb]
 	else{
